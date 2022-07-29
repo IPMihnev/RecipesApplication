@@ -11,7 +11,7 @@ export class RecipeService {
 
     private recipes: Recipe[] = [
         new Recipe(
-            'TARATOR - BULGARIAN COLD CUCUMBER SOUP',
+            'Tarator - Bulgarian Cold Cucumber Soup',
             'Tasty tarator',
             'https://img.sndimg.com/food/image/upload/f_auto,c_thumb,q_73,ar_16:9,w_768/v1/img/recipes/62/18/1/pic0pkinL.jpg',
             [
@@ -35,14 +35,18 @@ export class RecipeService {
     ];
 
     constructor(private shoppingListService: ShoppingListService) {
-        
+
     }
 
     getRecipes() {
         return this.recipes.slice();
     }
 
-    addIngredientsToShoppingList(ingredients: Ingredient[]){
+    getRecipe(id: number) {
+        return this.recipes.slice()[id];
+    }
+
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
         this.shoppingListService.addIngredients(ingredients);
     }
 }
