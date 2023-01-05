@@ -16,7 +16,7 @@ export interface AuthResponseData {
     registered?: boolean;
 }
 
-const apiKey = '...';
+const apiKey = "...";
 
 @Injectable()
 export class AuthService {
