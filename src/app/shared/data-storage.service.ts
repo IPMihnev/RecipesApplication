@@ -1,9 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, tap } from "rxjs/operators";
+import { environment } from "../../environments/environment";
 
 import { Recipe } from "../recipes/recipe.model";
 import { RecipeService } from "../recipes/recipe.service";
+
+const databaseUrl = environment.databaseUrl + '/recipes.json';
 
 @Injectable()
 export class DataStorageService {
@@ -14,7 +17,7 @@ export class DataStorageService {
     storeRecipes() {
         const recipes = this.recipeService.getRecipes();
         this.http.put(
-            'https://database/recipes.json',
+            databaseUrl,
             recipes).subscribe(response => {
                 console.log(response);
             });
@@ -23,7 +26,7 @@ export class DataStorageService {
     fetchRecipes() {
         return this.http
             .get<Recipe[]>(
-                'https://database/recipes.json',
+                databaseUrl,
             )
             .pipe(
                 map(recipes => {
